@@ -4,12 +4,14 @@ class Console {
   public $enabled = true;
   private $index = 1;
   private $log_path = '';
+  private $log_file = '';
   private $CI;
 
   function Console($enable=true) {
     $this->CI =& get_instance();
     $config =& get_config();
     $this->log_path = ($config['log_path'] != '') ? $config['log_path'] : BASEPATH.'logs/';
+    $this->log_file = 'console-'.date('Y-m-d').'.php';
     $this->enabled = $enable;
   }
   
@@ -84,11 +86,11 @@ class Console {
    */
   public function write($message, $type='LOG') {
     $log = '';
-    if ( ! file_exists($this->log_path.'console.php')) {
+    if ( ! file_exists($this->log_path.$this->log_file)) {
       $log .= "<"."?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?".">\n\n";
     }
     $log .= strtoupper($type).' - '.date('Y-m-d h:i:s').' --> '.print_r($message, true)."\n";
-    if (file_put_contents($this->log_path.'console.php', $log, FILE_APPEND)) {
+    if (file_put_contents($this->log_path.$this->log_file, $log, FILE_APPEND)) {
       return true;
     }
   }
