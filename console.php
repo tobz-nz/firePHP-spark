@@ -90,8 +90,11 @@ class Console {
       $log .= "<"."?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?".">\n\n";
     }
     $log .= strtoupper($type).' - '.date('Y-m-d h:i:s').' --> '.print_r($message, true)."\n";
-    if (file_put_contents($this->log_path.$this->log_file, $log, FILE_APPEND)) {
+    if (@file_put_contents($this->log_path.$this->log_file, $log, FILE_APPEND)) {
       return true;
+    }
+    else {
+      log_message('error', 'Failed to write console log file');
     }
   }
 }
