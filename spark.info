@@ -1,16 +1,18 @@
-The console library is a implemenation of the firephp class (http://www.firephp.org).
-It allows you to send log message from the server that display in the firebug console (when the firephp plugin is installed)
+# This is the spark-sdk specification. It's in a magical format called YAML.
+#  Use this format while developing your own sparks!
 
-### Usage
+# This is the spark name. This should be the registered name of the spark.
+# It is here for informational purposes only.
+name: Console
 
-	// console_log($type, $message, $write_to_file);
-	console_log('log', 'This is my log message', true);
+# This is the current version of this spark. All sparks should be in
+#  x.x.x format. Validation will fail otherwise.
+version: 0.5.1
 
-Supported log types are:
+# This is the version of CodeIgniter this spark is compatible up to. It should
+#  be in x.x.x format
+compatibility: 2.0.0
 
-- log
-- info
-- warn
-- error
-
-There do seem to be limitations with how big the objects/arrays that you log out are - of your page is not refreshing properly, thats probably the problem.
+# There are no dependencies now, but when there are, uncomment below.
+#dependencies:
+#  firePHP firefox plugin (http://www.firephp.org)
