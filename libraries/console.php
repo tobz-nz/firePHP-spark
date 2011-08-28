@@ -2,9 +2,9 @@
 class Console {
   
   public $enabled = true;
-  private $index = 1;
-  private $log_path = '';
-  private $log_file = '';
+  protected $index = 1;
+  public $log_path = '';
+  public $log_file = '';
   private $CI;
 
   function Console($enable=true) {
