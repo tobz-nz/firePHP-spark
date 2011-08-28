@@ -113,4 +113,4 @@ if (!function_exists('console_write')) {
 }
 
 /* End of file console.php */
-/* Location: application/libraries/console.php */
+/* Location: sparks/console/.../libraries/console.php */
