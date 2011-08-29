@@ -7,13 +7,14 @@ It allows you to send log message from the server that display in the firebug co
 	$this->load->spark('console');
 
 	// ($type, $message, $write_to_file);
-	$this->console->log('error', 'this will show an errorin firebug', false);
+	$this->console->log('this will show an error in firebug', 'error', FALSE);
 
 	// or use the alias console_log()
-	console_log('log', 'This is my log message', true);
+	console_log('This is my log message', 'log', FALSE);
+	console_log('This is my error message, also written to a log file', 'error', TRUE);
 
 	// disable the firebug headers, logs will still be written to file
-	$this->console->enabled = false;
+	$this->console->enabled = FALSE;
 
 	// set the log path or file name
 	$this->console->log_path = APPATH.'logs/';
