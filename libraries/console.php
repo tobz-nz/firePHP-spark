@@ -10,7 +10,7 @@ class Console {
   function Console($enable=true) {
     $this->CI =& get_instance();
     $config =& get_config();
-    $this->log_path = ($config['log_path'] != '') ? $config['log_path'] : BASEPATH.'logs/';
+    $this->log_path = ($config['log_path'] != '') ? $config['log_path'] : APPPATH.'logs/';
     $this->log_file = 'console-'.date('Y-m-d').'.php';
     $this->enabled = $enable;
   }
