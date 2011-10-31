@@ -32,7 +32,13 @@ class Console {
       else {
         // fallback if $type was incorrect
         $this->log('FirePHP: The log type: '.$type.' is Invalid', 'error', true);
-        $header_value = '[{"Type":"LOG"},'.json_encode($message).']';
+        // test the $message con be JSON encoded. if not, stringify it first
+        try {
+          $header_value = '[{"Type":"LOG"},'.@json_encode($message).']';
+        }
+        catch (Exception $e) {
+          $header_value = '[{"Type":"LOG"},'.json_encode(print_r($message, true)).']';
+        }
       }
       // write to log file
       if ($write_to_file==true) {
