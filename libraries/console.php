@@ -30,12 +30,12 @@ class Console {
   public $log_file = '';
   private $CI;
 
-  function Console($enable=true) {
+  function Console() {
     $this->CI =& get_instance();
     $config =& get_config();
     $this->log_path = ($config['log_path'] != '') ? $config['log_path'] : APPPATH.'logs/';
     $this->log_file = 'console-'.date('Y-m-d').'.php';
-    $this->enabled = $enable;
+    $this->enabled = config_item('console_active');
   }
   
   /**

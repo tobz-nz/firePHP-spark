@@ -4,7 +4,7 @@ It allows you to send log message from the server that display in the firebug co
 ### Usage
 
 	// load the spark
-	$this->load->spark('console');
+	$this->load->spark('console/[version]');
 
 	// ($type, $message, $write_to_file);
 	$this->console->log('this will show an error in firebug', 'error', FALSE);
@@ -13,12 +13,13 @@ It allows you to send log message from the server that display in the firebug co
 	console_log('This is my log message', 'log', FALSE);
 	console_log('This is my error message, also written to a log file', 'error', TRUE);
 
-	// disable the firebug headers, logs will still be written to file
-	$this->console->enabled = FALSE;
-
 	// set the log path or file name
 	$this->console->log_path = APPATH.'logs/';
 	$this->console->log_file = 'console-'.date('y-m-d h-i-s.php');
+
+To disable the firebug headers(logs will still be written to file), change this setting in config/console.php
+
+	$config['console_active'] = FALSE;
 
 
 Supported log types are:
